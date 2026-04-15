@@ -31,6 +31,7 @@ class MenuManager: NSObject {
         menu.addItem(NSMenuItem(title: LocalizedString.Preference.value, action: #selector(AppDelegate.openPreferences), keyEquivalent: ","))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(captureItem)
+        menu.addItem(NSMenuItem(title: LocalizedString.OCRCapture.value, action: #selector(AppDelegate.captureForOCR), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: LocalizedString.QuitFuwari.value, action: #selector(AppDelegate.quit), keyEquivalent: "q"))
         

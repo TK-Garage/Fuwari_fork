@@ -10,8 +10,9 @@ import Cocoa
 
 struct Constants {
     struct Notification {
-        static let capture     = "capture"
-        static let mouseMoved  = "mouseMoved"
+        static let capture       = "capture"
+        static let captureForOCR = "captureForOCR"
+        static let mouseMoved    = "mouseMoved"
     }
     
     struct UserDefaults {

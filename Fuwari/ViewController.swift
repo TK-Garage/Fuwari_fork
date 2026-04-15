@@ -14,11 +14,13 @@ class ViewController: NSViewController, NSWindowDelegate {
     private var windowControllers = [FloatWindow]()
     private var isCancelled = false
     private var oldApp: NSRunningApplication?
+    private var pendingOCR = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(startCapture), name: Notification.Name(rawValue: Constants.Notification.capture), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startCaptureForOCR), name: Notification.Name(rawValue: Constants.Notification.captureForOCR), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(NSWindowDelegate.windowDidResize(_:)), name: NSWindow.didResizeNotification, object: nil)
         
         oldApp = NSWorkspace.shared.frontmostApplication
@@ -49,8 +51,36 @@ class ViewController: NSViewController, NSWindowDelegate {
                 width: Int(CGFloat(cgImage.width) / currentScaleFactor),
                 height: Int(CGFloat(cgImage.height) / currentScaleFactor)
             )
-            self.createFloatWindow(rect: rect, image: cgImage, spaceMode: spaceMode)
+            if self.pendingOCR {
+                self.pendingOCR = false
+                self.performOCR(on: cgImage)
+            } else {
+                self.createFloatWindow(rect: rect, image: cgImage, spaceMode: spaceMode)
+            }
             try? FileManager.default.removeItem(at: imageUrl)
+        }
+    }
+
+    private func performOCR(on cgImage: CGImage) {
+        OCRManager.shared.recognizeText(in: cgImage) { result in
+            switch result {
+            case .success(let text):
+                OCRManager.shared.copyToPasteboard(text)
+                let alert = NSAlert()
+                alert.messageText = LocalizedString.OCRCopied.value
+                let preview = text.count > 500 ? String(text.prefix(500)) + "…" : text
+                alert.informativeText = preview
+                alert.addButton(withTitle: LocalizedString.OK.value)
+                NSApp.activate(ignoringOtherApps: true)
+                alert.runModal()
+            case .failure(let error):
+                let alert = NSAlert()
+                alert.messageText = LocalizedString.OCRFailedTitle.value
+                alert.informativeText = error.localizedDescription
+                alert.addButton(withTitle: LocalizedString.OK.value)
+                NSApp.activate(ignoringOtherApps: true)
+                alert.runModal()
+            }
         }
     }
     
@@ -66,6 +96,11 @@ class ViewController: NSViewController, NSWindowDelegate {
     }
     
     @objc private func startCapture() {
+        ScreenshotManager.shared.startCapture(spaceMode: .all)
+    }
+
+    @objc private func startCaptureForOCR() {
+        pendingOCR = true
         ScreenshotManager.shared.startCapture(spaceMode: .all)
     }
     

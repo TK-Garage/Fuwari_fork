@@ -40,6 +40,7 @@
 		BEF57FF71DFD5CD1006595B6 /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF57FF91DFD5CD1006595B6 /* GeneralPreferenceViewController.xib */; };
 		CA72BCDB25FB6F3F0041CB0D /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72BCDA25FB6F3F0041CB0D /* GeneralPreferenceViewController.swift */; };
 		CA72BCF025FCA22C0041CB0D /* GyazoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72BCEF25FCA22C0041CB0D /* GyazoManager.swift */; };
+		F0C12AA12B00000000000002 /* OCRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C12AA02B00000000000001 /* OCRManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,6 +96,7 @@
 		BEF580081DFD9786006595B6 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		CA72BCDA25FB6F3F0041CB0D /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
 		CA72BCEF25FCA22C0041CB0D /* GyazoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyazoManager.swift; sourceTree = "<group>"; };
+		F0C12AA02B00000000000001 /* OCRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRManager.swift; sourceTree = "<group>"; };
 		CAD92F1C25FE3B6B008D6CF8 /* Magnet.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Magnet.xcframework; path = Carthage/Build/Magnet.xcframework; sourceTree = "<group>"; };
 		CAD92F1D25FE3B6B008D6CF8 /* LoginServiceKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LoginServiceKit.xcframework; path = Carthage/Build/LoginServiceKit.xcframework; sourceTree = "<group>"; };
 		CAD92F1F25FE3B6B008D6CF8 /* KeyHolder.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KeyHolder.xcframework; path = Carthage/Build/KeyHolder.xcframework; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				BE5BE7A31E065D7800820201 /* HotKeyManager.swift */,
 				BE9777F71E100D1F00E5934F /* MenuManager.swift */,
 				CA72BCEF25FCA22C0041CB0D /* GyazoManager.swift */,
+				F0C12AA02B00000000000001 /* OCRManager.swift */,
 				BE6D5E741E12CF5E005492B2 /* AboutWindowController.swift */,
 				BE6D5E751E12CF5E005492B2 /* AboutWindowController.xib */,
 				BEF580021DFD9464006595B6 /* Preferences */,
@@ -331,6 +334,7 @@
 				BE85482420FB5C640035BC60 /* FloatView.swift in Sources */,
 				BE6D5E761E12CF5E005492B2 /* AboutWindowController.swift in Sources */,
 				CA72BCF025FCA22C0041CB0D /* GyazoManager.swift in Sources */,
+				F0C12AA12B00000000000002 /* OCRManager.swift in Sources */,
 				BE103A372845E59E005CA1A0 /* SpaceMode.swift in Sources */,
 				BE5BE7A41E065D7800820201 /* HotKeyManager.swift in Sources */,
 				BE5896A11DFCED26007CE7AC /* LocalizedString.swift in Sources */,

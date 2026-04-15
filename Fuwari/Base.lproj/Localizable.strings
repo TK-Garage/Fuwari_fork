@@ -59,3 +59,13 @@
 "Show Current Space" = "Show Current Space";
 
 "Reset Window" = "Reset Window";
+
+"OCR Recognize" = "Recognize Text (OCR)";
+
+"Capture and OCR" = "Capture && Recognize Text...";
+
+"OCR..." = "Recognizing text...";
+
+"OCR text copied" = "Text copied to clipboard";
+
+"OCR Failed" = "Text Recognition Failed";

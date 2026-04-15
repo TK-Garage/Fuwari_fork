@@ -59,3 +59,13 @@
 "Show Current Space" = "現在の操作スペースで表示";
 
 "Reset Window" = "元の位置とサイズに戻す";
+
+"OCR Recognize" = "テキストを認識 (OCR)";
+
+"Capture and OCR" = "キャプチャしてテキスト認識...";
+
+"OCR..." = "テキストを認識中...";
+
+"OCR text copied" = "テキストをクリップボードにコピーしました";
+
+"OCR Failed" = "テキスト認識に失敗しました";
