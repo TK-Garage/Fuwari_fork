@@ -54,6 +54,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func capture() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.capture), object: nil)
     }
+
+    @objc func captureForOCR() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.Notification.captureForOCR), object: nil)
+    }
     
     @objc func quit() {
         NSApp.terminate(nil)

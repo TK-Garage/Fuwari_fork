@@ -10,27 +10,30 @@ import Cocoa
 
 struct Constants {
     struct Notification {
-        static let capture     = "capture"
-        static let mouseMoved  = "mouseMoved"
+        static let capture       = "capture"
+        static let captureForOCR = "captureForOCR"
+        static let mouseMoved    = "mouseMoved"
     }
     
     struct UserDefaults {
         static let suppressAlertForLoginItem = "suppressAlertForLoginItem"
         static let uploadConfirmationItem    = "uploadConfirmationItem"
         static let captureKeyCombo           = "captureKeyCombo"
+        static let ocrCaptureKeyCombo        = "ocrCaptureKeyCombo"
         static let movingOpacity             = "movingOpacity"
         static let singleTapCaptureMode      = "singleTapCaptureMode"
         static let doubleTapCaptureMode      = "doubleTapCaptureMode"
     }
-    
+
     struct ImageName {
         static let generalOff = "General"
         static let generalOn  = "GeneralOn"
         static let shortcutOff = "Shortcut"
         static let shortcutOn  = "ShortcutOn"
     }
-    
+
     struct HotKey {
-        static let capture = "capture"
+        static let capture    = "capture"
+        static let ocrCapture = "ocrCapture"
     }
 }

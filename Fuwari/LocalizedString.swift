@@ -33,6 +33,12 @@ enum LocalizedString: String {
     case ShowAllSpaces     = "Show All Spaces"
     case ShowCurrentSpace  = "Show Current Space"
     
+    case OCRRecognize      = "OCR Recognize"
+    case OCRCapture        = "Capture and OCR"
+    case OCRRecognizing    = "OCR..."
+    case OCRCopied         = "OCR text copied"
+    case OCRFailedTitle    = "OCR Failed"
+
     case TabGeneral        = "General"
     case TabMenu           = "Menu"
     case TabShortcuts      = "Shortcuts"

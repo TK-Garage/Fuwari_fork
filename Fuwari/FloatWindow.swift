@@ -135,6 +135,8 @@ class FloatWindow: NSWindow {
         menu?.addItem(NSMenuItem.separator())
         menu?.addItem(NSMenuItem(title: LocalizedString.Upload.value, action: #selector(uploadImage), keyEquivalent: ""))
         menu?.addItem(NSMenuItem.separator())
+        menu?.addItem(NSMenuItem(title: LocalizedString.OCRRecognize.value, action: #selector(recognizeText), keyEquivalent: "t"))
+        menu?.addItem(NSMenuItem.separator())
         menu?.addItem(NSMenuItem(title: LocalizedString.ZoomReset.value, action: #selector(resetWindowScale), keyEquivalent: "r"))
         menu?.addItem(NSMenuItem(title: LocalizedString.ResetWindow.value, action: #selector(resetWindow), keyEquivalent: "0"))
         menu?.addItem(NSMenuItem(title: LocalizedString.ZoomIn.value, action: #selector(zoomInWindow), keyEquivalent: "+"))
@@ -211,6 +213,8 @@ class FloatWindow: NSWindow {
                 zoomOutWindow()
             case .w:
                 closeWindow()
+            case .t:
+                recognizeText()
             default:
                 break
             }
@@ -294,6 +298,26 @@ class FloatWindow: NSWindow {
         }
     }
     
+    @objc private func recognizeText() {
+        guard let contents = self.contentView?.layer?.contents else { return }
+        let cgImage = contents as! CGImage
+        self.showPopUp(text: LocalizedString.OCRRecognizing.value)
+        OCRManager.shared.recognizeText(in: cgImage) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let text):
+                OCRManager.shared.copyToPasteboard(text)
+                self.showPopUp(text: LocalizedString.OCRCopied.value)
+            case .failure(let error):
+                let alert = NSAlert()
+                alert.messageText = LocalizedString.OCRFailedTitle.value
+                alert.informativeText = error.localizedDescription
+                alert.addButton(withTitle: LocalizedString.OK.value)
+                alert.runModal()
+            }
+        }
+    }
+
     @objc private func uploadImage() {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             if let image = self.contentView?.layer?.contents {
